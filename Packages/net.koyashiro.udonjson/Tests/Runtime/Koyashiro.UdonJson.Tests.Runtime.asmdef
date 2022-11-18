@@ -1,0 +1,19 @@
+{
+    "name": "Koyashiro.UdonJson.Tests.Runtime",
+    "references": [
+        "UdonSharp.Runtime",
+        "Koyashiro.UdonList.Runtime",
+        "Koyashiro.UdonList.Tests.Runtime",
+        "Koyashiro.UdonDictionary.Runtime",
+        "Koyashiro.UdonJson.Runtime"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

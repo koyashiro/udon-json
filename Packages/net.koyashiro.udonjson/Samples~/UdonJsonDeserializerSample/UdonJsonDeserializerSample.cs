@@ -1,10 +1,3 @@
-# UdonJson
-
-JSON deserializer implementation for UdonSharp.
-
-## Deserialization
-
-```cs
 using UnityEngine;
 using UdonSharp;
 using Koyashiro.UdonJson;
@@ -75,5 +68,3 @@ public class UdonJsonDeserializerSample : UdonSharpBehaviour
         Debug.Log(valueG0.AsNumber()); // 0
     }
 }
-
-```
