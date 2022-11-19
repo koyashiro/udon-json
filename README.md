@@ -18,8 +18,8 @@ public class UdonJsonSerializerSample : UdonSharpBehaviour
         json.SetValue("keyB", 123);
         var valueC = UdonJsonValue.NewObject();
         valueC.SetValue("keyC1", "valueC1");
-        valueC.SetValue("keyC2", "valueC1");
-        valueC.SetValue("keyC3", "valueC2");
+        valueC.SetValue("keyC2", "valueC2");
+        valueC.SetValue("keyC3", "valueC3");
         json.SetValue("keyC", valueC);
         var valueD = UdonJsonValue.NewArray();
         valueD.AddValue(0);
