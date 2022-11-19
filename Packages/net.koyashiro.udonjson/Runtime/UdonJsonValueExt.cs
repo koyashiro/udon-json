@@ -52,47 +52,83 @@ namespace Koyashiro.UdonJson
             return null;
         }
 
-        public static UdonJsonValue GetValue(this UdonJsonValue v, string key)
+        public static int GetCount(this UdonJsonValue v)
         {
-            return (UdonJsonValue)v.AsDictionary().GetValue(key);
+            if (v.GetKind() != UdonJsonValueKind.Object && v.GetKind() != UdonJsonValueKind.Array)
+            {
+                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+            }
+
+            return v.AsList().GetCount();
         }
 
-        public static UdonJsonValue GetValue(this UdonJsonValue v, int key)
-        {
-            return (UdonJsonValue)(v.AsList().GetItem(key));
-        }
-
-        public static void SetValue(this UdonJsonValue v, string key)
-        {
-            v.AsDictionary().GetValue(key);
-        }
-
-        public static void SetValue(this UdonJsonValue v, int key, UdonJsonValue value)
-        {
-            v.AsList().SetItem(key, value);
-        }
-
-        public static void AddValue(this UdonJsonValue v, UdonJsonValue value)
-        {
-            v.AsList().Add(value);
-        }
-
-        private static UdonDictionary AsDictionary(this UdonJsonValue v)
+        public static string GetKey(this UdonJsonValue v, int index)
         {
             if (v.GetKind() != UdonJsonValueKind.Object)
             {
                 UdonException.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            return (UdonDictionary)v.GetValueUnchecked();
+            return (string)v.AsDictionary().GetKey(index);
         }
 
-        private static UdonList AsList(this UdonJsonValue v)
+        public static UdonJsonValue GetValue(this UdonJsonValue v, string key)
+        {
+            if (v.GetKind() != UdonJsonValueKind.Object)
+            {
+                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+            }
+
+            return (UdonJsonValue)v.AsDictionary().GetValue(key);
+        }
+
+        public static UdonJsonValue GetValue(this UdonJsonValue v, int key)
         {
             if (v.GetKind() != UdonJsonValueKind.Array)
             {
                 UdonException.ThrowArgumentException(ERR_INVALID_KIND);
             }
+
+            return (UdonJsonValue)(v.AsList().GetItem(key));
+        }
+
+        public static void SetValue(this UdonJsonValue v, string key, UdonJsonValue value)
+        {
+            if (v.GetKind() != UdonJsonValueKind.Object)
+            {
+                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+            }
+
+            v.AsDictionary().SetValue(key, value);
+        }
+
+        public static void SetValue(this UdonJsonValue v, int key, UdonJsonValue value)
+        {
+            if (v.GetKind() != UdonJsonValueKind.Array)
+            {
+                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+            }
+
+            v.AsList().SetItem(key, value);
+        }
+
+        public static void AddValue(this UdonJsonValue v, UdonJsonValue value)
+        {
+            if (v.GetKind() != UdonJsonValueKind.Array)
+            {
+                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+            }
+
+            v.AsList().Add(value);
+        }
+
+        private static UdonDictionary AsDictionary(this UdonJsonValue v)
+        {
+            return (UdonDictionary)v.GetValueUnchecked();
+        }
+
+        private static UdonList AsList(this UdonJsonValue v)
+        {
 
             return (UdonList)v.GetValueUnchecked();
         }
@@ -101,7 +137,6 @@ namespace Koyashiro.UdonJson
         {
             return (UdonJsonValueKind)(v.AsRawArray()[1]);
         }
-
 
         private static object[] AsRawArray(this UdonJsonValue v)
         {
