@@ -126,5 +126,4 @@ namespace Koyashiro.UdonJson.Tests
             Assert.Equal(null, error);
         }
     }
-
 }
