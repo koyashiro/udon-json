@@ -2,7 +2,7 @@
   "name": "net.koyashiro.udonjson",
   "displayName": "UdonJson",
   "version": "0.3.0",
-  "description": "JSON deserializer implementation for UdonSharp.",
+  "description": "JSON serializer/deserializer implementation for UdonSharp.",
   "homepage": "https://github.com/koyashiro/udon-json",
   "bugs": {
     "url": "https://github.com/koyashiro/udon-json/issues"
@@ -18,6 +18,11 @@
     "url": "https://github.com/koyashiro/udon-json"
   },
   "samples": [
+    {
+      "displayName": "UdonJsonSerializerSample",
+      "description": "Sample of UdonJsonSerializerSample",
+      "path": "Samples~/UdonJsonSerializerSample"
+    },
     {
       "displayName": "UdonJsonDeserializerSample",
       "description": "Sample of UdonJsonDeserializer",
