@@ -17,16 +17,17 @@
     "type": "git",
     "url": "https://github.com/koyashiro/udon-json"
   },
-  "vpmDependencies": {
-    "com.vrchat.udonsharp": "1.1.5",
-    "net.koyashiro.udonlist": "0.2.1",
-    "net.koyashiro.udondictionary": "0.1.0"
-  },
   "samples": [
     {
       "displayName": "UdonJsonDeserializerSample",
       "description": "Sample of UdonJsonDeserializer",
       "path": "Samples~/UdonJsonDeserializerSample"
     }
-  ]
+  ],
+  "url": "https://github.com/koyashiro/udon-json/releases/download/v0.1.0/net.koyashiro.udonjson-0.1.0.zip",
+  "vpmDependencies": {
+    "com.vrchat.udonsharp": "1.1.5",
+    "net.koyashiro.udonlist": "0.2.1",
+    "net.koyashiro.udondictionary": "0.1.0"
+  }
 }
