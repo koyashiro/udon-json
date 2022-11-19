@@ -1,7 +1,7 @@
 {
   "name": "net.koyashiro.udonjson",
   "displayName": "UdonJson",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "JSON serializer/deserializer implementation for UdonSharp.",
   "homepage": "https://github.com/koyashiro/udon-json",
   "bugs": {
@@ -29,7 +29,7 @@
       "path": "Samples~/UdonJsonDeserializerSample"
     }
   ],
-  "url": "https://github.com/koyashiro/udon-json/releases/download/v0.3.0/net.koyashiro.udonjson-0.3.0.zip",
+  "url": "https://github.com/koyashiro/udon-json/releases/download/v0.4.0/net.koyashiro.udonjson-0.4.0.zip",
   "vpmDependencies": {
     "com.vrchat.udonsharp": "1.1.5",
     "net.koyashiro.udonlist": "0.2.1",
