@@ -14,7 +14,7 @@ namespace Koyashiro.UdonJson
 
         public static string GetOutput(this UdonJsonSerializer ser)
         {
-            var chars = new char[ser.GetBuf().GetCount()];
+            var chars = new char[ser.GetBuf().Count()];
             for (var i = 0; i < chars.Length; i++)
             {
                 chars[i] = (char)ser.GetBuf().GetItem(i);
@@ -52,7 +52,7 @@ namespace Koyashiro.UdonJson
                     break;
                 case UdonJsonValueKind.Object:
                     ser.Write('{');
-                    for (var i = 0; i < v.GetCount(); i++)
+                    for (var i = 0; i < v.Count(); i++)
                     {
                         var key = v.GetKey(i);
                         ser.Write('"');
@@ -63,7 +63,7 @@ namespace Koyashiro.UdonJson
                         var value = v.GetValue(key);
                         ser.Write(value);
 
-                        if (i != v.GetCount() - 1)
+                        if (i != v.Count() - 1)
                         {
                             ser.Write(',');
                         }
@@ -72,12 +72,12 @@ namespace Koyashiro.UdonJson
                     break;
                 case UdonJsonValueKind.Array:
                     ser.Write('[');
-                    for (var i = 0; i < v.GetCount(); i++)
+                    for (var i = 0; i < v.Count(); i++)
                     {
                         var value = v.GetValue(i);
                         ser.Write(value);
 
-                        if (i != v.GetCount() - 1)
+                        if (i != v.Count() - 1)
                         {
                             ser.Write(',');
                         }

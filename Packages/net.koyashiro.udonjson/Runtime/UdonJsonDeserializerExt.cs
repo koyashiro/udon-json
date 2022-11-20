@@ -304,7 +304,7 @@ namespace Koyashiro.UdonJson
                     break;
                 }
 
-                if (dic.GetCount() > 0)
+                if (dic.Count() > 0)
                 {
                     if (!des.TryConsume(','))
                     {
@@ -364,7 +364,7 @@ namespace Koyashiro.UdonJson
                     break;
                 }
 
-                if (list.GetCount() > 0)
+                if (list.Count() > 0)
                 {
                     if (!des.TryConsume(','))
                     {

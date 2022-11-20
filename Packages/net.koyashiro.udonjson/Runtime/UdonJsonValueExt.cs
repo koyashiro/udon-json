@@ -1,5 +1,6 @@
 namespace Koyashiro.UdonJson
 {
+    using Koyashiro.UdonException;
     using Koyashiro.UdonList;
     using Koyashiro.UdonDictionary;
 
@@ -52,14 +53,14 @@ namespace Koyashiro.UdonJson
             return null;
         }
 
-        public static int GetCount(this UdonJsonValue v)
+        public static int Count(this UdonJsonValue v)
         {
             if (v.GetKind() != UdonJsonValueKind.Object && v.GetKind() != UdonJsonValueKind.Array)
             {
                 UdonException.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            return v.AsList().GetCount();
+            return v.AsList().Count();
         }
 
         public static string GetKey(this UdonJsonValue v, int index)
