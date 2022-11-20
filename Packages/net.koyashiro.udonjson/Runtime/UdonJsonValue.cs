@@ -5,6 +5,7 @@ namespace Koyashiro.UdonJson
     using Koyashiro.UdonDictionary;
     using Koyashiro.UdonList;
 
+    [UnityEngine.AddComponentMenu("")]
     public class UdonJsonValue : UdonSharpBehaviour
     {
         public static UdonJsonValue NewString(string s)

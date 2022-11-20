@@ -2,6 +2,7 @@ using UdonSharp;
 
 namespace Koyashiro.UdonJson
 {
+    [UnityEngine.AddComponentMenu("")]
     public class UdonJsonDeserializer : UdonSharpBehaviour
     {
         private static UdonJsonDeserializer New(string s)

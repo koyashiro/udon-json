@@ -4,6 +4,7 @@ namespace Koyashiro.UdonJson
 {
     using Koyashiro.UdonList;
 
+    [UnityEngine.AddComponentMenu("")]
     public class UdonJsonSerializer : UdonSharpBehaviour
     {
         private static UdonJsonSerializer New(UdonJsonValue input)
