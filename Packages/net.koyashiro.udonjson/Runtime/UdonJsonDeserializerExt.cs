@@ -9,7 +9,7 @@ namespace Koyashiro.UdonJson
     {
         private const string ERROR_UNEXPECTED_END = "Unexpected end";
         private const string ERROR_UNEXPECTED_TOKEN = "Unexpected token";
-        private const string ERROR_EXPECTED_BRACE = "Expected {";
+        //private const string ERROR_EXPECTED_BRACE = "Expected {";
 
         public static char[] GetInput(this UdonJsonDeserializer des)
         {
@@ -59,7 +59,9 @@ namespace Koyashiro.UdonJson
 
                 des.ConsumeWhitespace();
 
-                if (des.Current() == '"')
+                var current = des.Current();
+
+                if (current == '"')
                 {
                     if (!des.TryDeserializeString())
                     {
@@ -71,7 +73,7 @@ namespace Koyashiro.UdonJson
                     return true;
                 }
 
-                if (des.Current() == '-' || ('0' <= des.Current() && des.Current() <= '9'))
+                if (current == '-' || des.IsDigit())
                 {
                     if (!des.TryDeserializeNumber())
                     {
@@ -83,7 +85,7 @@ namespace Koyashiro.UdonJson
                     return true;
                 }
 
-                if (des.Current() == '{')
+                if (current == '{')
                 {
                     if (!des.TryDeserializeObject())
                     {
@@ -95,7 +97,7 @@ namespace Koyashiro.UdonJson
                     return true;
                 }
 
-                if (des.Current() == '[')
+                if (current == '[')
                 {
                     if (!des.TryDeserializeArray())
                     {
@@ -107,7 +109,7 @@ namespace Koyashiro.UdonJson
                     return true;
                 }
 
-                if (des.Current() == 't')
+                if (current == 't')
                 {
                     if (!des.TryDeserializeTrue())
                     {
@@ -118,7 +120,7 @@ namespace Koyashiro.UdonJson
                     return true;
                 }
 
-                if (des.Current() == 'f')
+                if (current == 'f')
                 {
                     if (!des.TryDeserializeFalse())
                     {
@@ -129,7 +131,7 @@ namespace Koyashiro.UdonJson
                     return true;
                 }
 
-                if (des.Current() == 'n')
+                if (current == 'n')
                 {
                     if (!des.TryDeserializeNull())
                     {
@@ -203,16 +205,14 @@ namespace Koyashiro.UdonJson
             }
             else
             {
-                des.Next();
-
                 while (true)
                 {
+                    des.Next();
+
                     if (des.IsEnd() || !des.IsDigit())
                     {
                         break;
                     }
-
-                    des.Next();
                 }
             }
 
@@ -233,7 +233,7 @@ namespace Koyashiro.UdonJson
             }
 
             // exponent
-            if (!des.IsEnd() && (des.Current() == 'e' || des.Current() == 'E'))
+            if (!des.IsEnd() && "Ee".IndexOf(des.Current()) != -1)
             {
                 des.Next();
 
@@ -243,7 +243,7 @@ namespace Koyashiro.UdonJson
                     return false;
                 }
 
-                if (des.Current() == '-' || des.Current() == '+')
+                if ("-+".IndexOf(des.Current()) != -1)
                 {
                     des.Next();
 
@@ -402,7 +402,7 @@ namespace Koyashiro.UdonJson
                     return false;
                 }
 
-                if (des.IsEnd() || des.Current() != c)
+                if (des.Current() != c)
                 {
                     des.SetError(ERROR_UNEXPECTED_TOKEN);
                     return false;
@@ -427,7 +427,7 @@ namespace Koyashiro.UdonJson
                     return false;
                 }
 
-                if (des.IsEnd() || des.Current() != c)
+                if (des.Current() != c)
                 {
                     des.SetError(ERROR_UNEXPECTED_TOKEN);
                     return false;
@@ -452,7 +452,7 @@ namespace Koyashiro.UdonJson
                     return false;
                 }
 
-                if (des.IsEnd() || des.Current() != c)
+                if (des.Current() != c)
                 {
                     des.SetError(ERROR_UNEXPECTED_TOKEN);
                     return false;
@@ -471,13 +471,15 @@ namespace Koyashiro.UdonJson
         private static bool IsWhitespace(this UdonJsonDeserializer des)
         {
             var c = des.GetInput()[des.GetPos()];
-            return c == ' ' || c == '\n' || c == '\r' || c == '\t';
+            /*return c == ' ' || c == '\n' || c == '\r' || c == '\t';*/
+            return " \n\r\t".IndexOf(c) != -1;
         }
 
         private static bool IsDigit(this UdonJsonDeserializer des)
         {
             var c = des.GetInput()[des.GetPos()];
-            return '0' <= c && c <= '9';
+            /*return '0' <= c && c <= '9';*/
+            return "0123456789".IndexOf(c) != -1;
         }
 
         private static bool IsZero(this UdonJsonDeserializer des)
