@@ -209,10 +209,10 @@ namespace Koyashiro.UdonJson
             return (UdonDictionary)v.GetValueUnchecked();
         }
 
-        private static UdonList AsList(this UdonJsonValue v)
+        private static UdonObjectList AsList(this UdonJsonValue v)
         {
 
-            return (UdonList)v.GetValueUnchecked();
+            return (UdonObjectList)v.GetValueUnchecked();
         }
 
         private static object GetValueUnchecked(this UdonJsonValue v)

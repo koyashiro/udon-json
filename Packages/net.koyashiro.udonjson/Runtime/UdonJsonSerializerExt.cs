@@ -32,9 +32,9 @@ namespace Koyashiro.UdonJson
             return (UdonJsonValue)ser.AsArray()[0];
         }
 
-        private static UdonList GetBuf(this UdonJsonSerializer ser)
+        private static UdonCharList GetBuf(this UdonJsonSerializer ser)
         {
-            return (UdonList)ser.AsArray()[1];
+            return (UdonCharList)ser.AsArray()[1];
         }
 
         [RecursiveMethod]

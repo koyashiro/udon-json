@@ -58,7 +58,7 @@ namespace Koyashiro.UdonJson.Tests
             Assert.Equal(null, error);
 
             Assert.True(UdonJsonDeserializer.TryDeserialize("[]", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Array, UdonList.New() }, output);
+            Assert.Equal(new object[] { UdonJsonValueKind.Array, UdonObjectList.New() }, output);
             Assert.Equal(null, error);
 
             Assert.True(UdonJsonDeserializer.TryDeserialize("true", out output, out error));
@@ -110,7 +110,7 @@ namespace Koyashiro.UdonJson.Tests
             dicThird.SetValue("thirdF", UdonJsonValue.NewFalse());
             dicThird.SetValue("thirdG", UdonJsonValue.NewNull());
             dic.SetValue("third", UdonJsonValue.NewObject(dicThird));
-            var listFourth = UdonList.New();
+            var listFourth = UdonObjectList.New();
             listFourth.Add(UdonJsonValue.NewString("str"));
             listFourth.Add(UdonJsonValue.NewNumber(123));
             listFourth.Add(UdonJsonValue.NewObject());

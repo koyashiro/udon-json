@@ -103,7 +103,7 @@ namespace Koyashiro.UdonJson
                     {
                         return false;
                     }
-                    var array = (UdonList)des.GetOutput();
+                    var array = (UdonObjectList)des.GetOutput();
 
                     des.SetOutput(UdonJsonValue.NewArray(array));
                     return true;
@@ -347,7 +347,7 @@ namespace Koyashiro.UdonJson
             // [
             des.Next();
 
-            var list = UdonList.New();
+            var list = UdonObjectList.New();
 
             while (true)
             {

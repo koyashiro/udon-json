@@ -30,10 +30,10 @@ namespace Koyashiro.UdonJson
 
         public static UdonJsonValue NewArray()
         {
-            return New(UdonJsonValueKind.Array, UdonList.New());
+            return New(UdonJsonValueKind.Array, UdonObjectList.New());
         }
 
-        public static UdonJsonValue NewArray(UdonList array)
+        public static UdonJsonValue NewArray(UdonObjectList array)
         {
             return New(UdonJsonValueKind.Array, array);
         }
