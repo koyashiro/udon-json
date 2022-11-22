@@ -1,3 +1,4 @@
+using UnityEngine;
 using UdonSharp;
 using Koyashiro.UdonTest;
 
@@ -6,6 +7,7 @@ namespace Koyashiro.UdonJson.Tests
     using Koyashiro.UdonList;
     using Koyashiro.UdonDictionary;
 
+    [AddComponentMenu("")]
     public class DeserializeTest : UdonSharpBehaviour
     {
         public void Start()
