@@ -76,30 +76,30 @@ namespace Koyashiro.UdonJson.Tests
             Assert.Equal(null, error);
 
             Assert.True(UdonJsonDeserializer.TryDeserialize(@"{
-            ""first"": ""str"",
-            ""second"": 123,
-            ""third"": {
-                ""thirdA"": ""str"",
-                ""thirdB"": 123,
-                ""thirdC"": {},
-                ""thirdD"": [],
-                ""thirdE"": true,
-                ""thirdF"": false,
-                ""thirdG"": null
-            },
-            ""fourth"": [
-                ""str"",
-                123,
-                {},
-                [],
-                true,
-                false,
-                null
-            ],
-            ""fifth"": true,
-            ""sixth"": false,
-            ""seventh"": null
-        }", out output, out error));
+                ""first"": ""str"",
+                ""second"": 123,
+                ""third"": {
+                    ""thirdA"": ""str"",
+                    ""thirdB"": 123,
+                    ""thirdC"": {},
+                    ""thirdD"": [],
+                    ""thirdE"": true,
+                    ""thirdF"": false,
+                    ""thirdG"": null
+                },
+                ""fourth"": [
+                    ""str"",
+                    123,
+                    {},
+                    [],
+                    true,
+                    false,
+                    null
+                ],
+                ""fifth"": true,
+                ""sixth"": false,
+                ""seventh"": null
+            }", out output, out error));
             var dic = UdonDictionary.New();
             dic.SetValue("first", UdonJsonValue.NewString("str"));
             dic.SetValue("second", UdonJsonValue.NewNumber(123));
