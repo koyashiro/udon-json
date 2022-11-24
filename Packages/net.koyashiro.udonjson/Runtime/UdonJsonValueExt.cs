@@ -55,12 +55,18 @@ namespace Koyashiro.UdonJson
 
         public static int Count(this UdonJsonValue v)
         {
-            if (v.GetKind() != UdonJsonValueKind.Object && v.GetKind() != UdonJsonValueKind.Array)
+            if (v.GetKind() == UdonJsonValueKind.Object)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                return v.AsDictionary().Count();
             }
 
-            return v.AsList().Count();
+            if (v.GetKind() == UdonJsonValueKind.Array)
+            {
+                return v.AsList().Count();
+            }
+
+            UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+            return default;
         }
 
         public static string GetKey(this UdonJsonValue v, int index)
