@@ -3,7 +3,6 @@ namespace Koyashiro.UdonJson
     using Koyashiro.UdonException;
     using Koyashiro.UdonList;
     using Koyashiro.UdonDictionary;
-    using YamlDotNet.Core.Tokens;
 
     public static class UdonJsonValueExt
     {
