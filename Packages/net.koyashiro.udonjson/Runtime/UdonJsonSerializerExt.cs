@@ -22,19 +22,14 @@ namespace Koyashiro.UdonJson
             return new string(chars);
         }
 
-        private static object[] AsArray(this UdonJsonSerializer ser)
-        {
-            return (object[])(object)ser;
-        }
-
         private static UdonJsonValue GetInput(this UdonJsonSerializer ser)
         {
-            return (UdonJsonValue)ser.AsArray()[0];
+            return (UdonJsonValue)(((object[])(object)ser)[0]);
         }
 
         private static UdonList<char> GetBuf(this UdonJsonSerializer ser)
         {
-            return (UdonList<char>)ser.AsArray()[1];
+            return (UdonList<char>)(((object[])(object)ser)[1]);
         }
 
         [RecursiveMethod]

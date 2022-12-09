@@ -10,7 +10,7 @@ namespace Koyashiro.UdonJson
 
         public static UdonJsonValueKind GetKind(this UdonJsonValue value)
         {
-            return (UdonJsonValueKind)(value.AsRawArray()[0]);
+            return (UdonJsonValueKind)(((object[])(object)value)[0]);
         }
 
         public static string AsString(this UdonJsonValue v)
@@ -233,12 +233,7 @@ namespace Koyashiro.UdonJson
 
         private static object GetValueUnchecked(this UdonJsonValue v)
         {
-            return (UdonJsonValueKind)(v.AsRawArray()[1]);
-        }
-
-        private static object[] AsRawArray(this UdonJsonValue v)
-        {
-            return (object[])(object)v;
+            return (UdonJsonValueKind)(((object[])(object)v)[1]);
         }
     }
 }
