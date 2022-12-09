@@ -52,9 +52,10 @@ namespace Koyashiro.UdonJson
                     break;
                 case UdonJsonValueKind.Object:
                     ser.Write('{');
+                    var keys = v.Keys();
                     for (var i = 0; i < v.Count(); i++)
                     {
-                        var key = v.GetKey(i);
+                        var key = keys[i];
                         ser.Write('"');
                         ser.Write(key);
                         ser.Write('"');
