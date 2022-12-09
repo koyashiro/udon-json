@@ -91,7 +91,7 @@ namespace Koyashiro.UdonJson
                     {
                         return false;
                     }
-                    var dic = (UdonDictionary)des.GetOutput();
+                    var dic = (UdonDictionary<string, object>)des.GetOutput();
 
                     des.SetOutput(UdonJsonValue.NewObject(dic));
                     return true;
@@ -103,7 +103,7 @@ namespace Koyashiro.UdonJson
                     {
                         return false;
                     }
-                    var array = (UdonObjectList)des.GetOutput();
+                    var array = (UdonList<object>)des.GetOutput();
 
                     des.SetOutput(UdonJsonValue.NewArray(array));
                     return true;
@@ -287,7 +287,7 @@ namespace Koyashiro.UdonJson
             // {
             des.Next();
 
-            var dic = UdonDictionary.New();
+            var dic = UdonDictionary<string, object>.New();
 
             while (true)
             {
@@ -347,7 +347,7 @@ namespace Koyashiro.UdonJson
             // [
             des.Next();
 
-            var list = UdonObjectList.New();
+            var list = UdonList<object>.New();
 
             while (true)
             {

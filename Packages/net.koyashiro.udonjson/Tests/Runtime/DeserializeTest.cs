@@ -56,11 +56,11 @@ namespace Koyashiro.UdonJson.Tests
             Assert.Equal(null, error);
 
             Assert.True(UdonJsonDeserializer.TryDeserialize("{}", out output));
-            Assert.Equal(new object[] { UdonJsonValueKind.Object, UdonDictionary.New() }, output);
+            Assert.Equal(new object[] { UdonJsonValueKind.Object, UdonDictionary<string, object>.New() }, output);
             Assert.Equal(null, error);
 
             Assert.True(UdonJsonDeserializer.TryDeserialize("[]", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Array, UdonObjectList.New() }, output);
+            Assert.Equal(new object[] { UdonJsonValueKind.Array, UdonList<object>.New() }, output);
             Assert.Equal(null, error);
 
             Assert.True(UdonJsonDeserializer.TryDeserialize("true", out output, out error));
@@ -100,10 +100,10 @@ namespace Koyashiro.UdonJson.Tests
                 ""sixth"": false,
                 ""seventh"": null
             }", out output, out error));
-            var dic = UdonDictionary.New();
+            var dic = UdonDictionary<string, object>.New();
             dic.SetValue("first", UdonJsonValue.NewString("str"));
             dic.SetValue("second", UdonJsonValue.NewNumber(123));
-            var dicThird = UdonDictionary.New();
+            var dicThird = UdonDictionary<string, object>.New();
             dicThird.SetValue("thirdA", UdonJsonValue.NewString("str"));
             dicThird.SetValue("thirdB", UdonJsonValue.NewNumber(123));
             dicThird.SetValue("thirdC", UdonJsonValue.NewObject());
@@ -112,7 +112,7 @@ namespace Koyashiro.UdonJson.Tests
             dicThird.SetValue("thirdF", UdonJsonValue.NewFalse());
             dicThird.SetValue("thirdG", UdonJsonValue.NewNull());
             dic.SetValue("third", UdonJsonValue.NewObject(dicThird));
-            var listFourth = UdonObjectList.New();
+            var listFourth = UdonList<object>.New();
             listFourth.Add(UdonJsonValue.NewString("str"));
             listFourth.Add(UdonJsonValue.NewNumber(123));
             listFourth.Add(UdonJsonValue.NewObject());
