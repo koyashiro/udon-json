@@ -15,65 +15,65 @@ namespace Koyashiro.UdonJson.Tests
             UdonJsonValue output;
             string error;
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("\"str\"", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.String, "str" }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("\"str\"", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.String, "str" }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("123", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, 123d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("123", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, 123d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("-123", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("-123", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("0.123", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, 0.123d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("0.123", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, 0.123d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("-0.123", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, -0.123d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("-0.123", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, -0.123d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("123.456", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, 123.456d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("123.456", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, 123.456d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456e12", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456e12d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456e12", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456e12d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456e-12", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456e-12d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456e-12", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456e-12d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456e+12", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456e+12d }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("-123.456e+12", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Number, -123.456e+12d }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("{}", out output));
-            Assert.Equal(new object[] { UdonJsonValueKind.Object, UdonDictionary.New() }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("{}", out output), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Object, UdonDictionary<string, object>.New() }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("[]", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Array, UdonObjectList.New() }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("[]", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Array, UdonList<object>.New() }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("true", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.True, true }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("true", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.True, true }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("false", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.False, false }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("false", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.False, false }, output, this);
+            Assert.Equal(null, error, this);
 
-            Assert.True(UdonJsonDeserializer.TryDeserialize("null", out output, out error));
-            Assert.Equal(new object[] { UdonJsonValueKind.Null, null }, output);
-            Assert.Equal(null, error);
+            Assert.True(UdonJsonDeserializer.TryDeserialize("null", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.Null, null }, output, this);
+            Assert.Equal(null, error, this);
 
             Assert.True(UdonJsonDeserializer.TryDeserialize(@"{
                 ""first"": ""str"",
@@ -99,11 +99,11 @@ namespace Koyashiro.UdonJson.Tests
                 ""fifth"": true,
                 ""sixth"": false,
                 ""seventh"": null
-            }", out output, out error));
-            var dic = UdonDictionary.New();
+            }", out output, out error), this);
+            var dic = UdonDictionary<string, object>.New();
             dic.SetValue("first", UdonJsonValue.NewString("str"));
             dic.SetValue("second", UdonJsonValue.NewNumber(123));
-            var dicThird = UdonDictionary.New();
+            var dicThird = UdonDictionary<string, object>.New();
             dicThird.SetValue("thirdA", UdonJsonValue.NewString("str"));
             dicThird.SetValue("thirdB", UdonJsonValue.NewNumber(123));
             dicThird.SetValue("thirdC", UdonJsonValue.NewObject());
@@ -112,7 +112,7 @@ namespace Koyashiro.UdonJson.Tests
             dicThird.SetValue("thirdF", UdonJsonValue.NewFalse());
             dicThird.SetValue("thirdG", UdonJsonValue.NewNull());
             dic.SetValue("third", UdonJsonValue.NewObject(dicThird));
-            var listFourth = UdonObjectList.New();
+            var listFourth = UdonList<object>.New();
             listFourth.Add(UdonJsonValue.NewString("str"));
             listFourth.Add(UdonJsonValue.NewNumber(123));
             listFourth.Add(UdonJsonValue.NewObject());
@@ -124,8 +124,8 @@ namespace Koyashiro.UdonJson.Tests
             dic.SetValue("fifth", UdonJsonValue.NewTrue());
             dic.SetValue("sixth", UdonJsonValue.NewFalse());
             dic.SetValue("seventh", UdonJsonValue.NewNull());
-            Assert.Equal(new object[] { UdonJsonValueKind.Object, dic }, output);
-            Assert.Equal(null, error);
+            Assert.Equal(new object[] { UdonJsonValueKind.Object, dic }, output, this);
+            Assert.Equal(null, error, this);
         }
     }
 }

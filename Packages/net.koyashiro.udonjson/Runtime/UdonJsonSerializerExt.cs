@@ -22,19 +22,14 @@ namespace Koyashiro.UdonJson
             return new string(chars);
         }
 
-        private static object[] AsArray(this UdonJsonSerializer ser)
-        {
-            return (object[])(object)ser;
-        }
-
         private static UdonJsonValue GetInput(this UdonJsonSerializer ser)
         {
-            return (UdonJsonValue)ser.AsArray()[0];
+            return (UdonJsonValue)(((object[])(object)ser)[0]);
         }
 
-        private static UdonCharList GetBuf(this UdonJsonSerializer ser)
+        private static UdonList<char> GetBuf(this UdonJsonSerializer ser)
         {
-            return (UdonCharList)ser.AsArray()[1];
+            return (UdonList<char>)(((object[])(object)ser)[1]);
         }
 
         [RecursiveMethod]
@@ -52,9 +47,10 @@ namespace Koyashiro.UdonJson
                     break;
                 case UdonJsonValueKind.Object:
                     ser.Write('{');
+                    var keys = v.Keys();
                     for (var i = 0; i < v.Count(); i++)
                     {
-                        var key = v.GetKey(i);
+                        var key = keys[i];
                         ser.Write('"');
                         ser.Write(key);
                         ser.Write('"');

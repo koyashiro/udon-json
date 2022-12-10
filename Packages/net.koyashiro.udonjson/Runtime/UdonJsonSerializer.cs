@@ -9,7 +9,7 @@ namespace Koyashiro.UdonJson
     {
         private static UdonJsonSerializer New(UdonJsonValue input)
         {
-            var buf = UdonCharList.New();
+            var buf = UdonList<char>.New();
             return (UdonJsonSerializer)(object)(new object[] { input, buf });
         }
 

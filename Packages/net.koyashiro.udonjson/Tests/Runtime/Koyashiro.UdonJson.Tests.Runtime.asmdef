@@ -2,8 +2,8 @@
     "name": "Koyashiro.UdonJson.Tests.Runtime",
     "references": [
         "UdonSharp.Runtime",
-        "Koyashiro.UdonTest.Runtime",
-        "Koyashiro.UdonList.Runtime",
+        "Koyashiro.UdonTest",
+        "Koyashiro.UdonList",
         "Koyashiro.UdonDictionary.Runtime",
         "Koyashiro.UdonJson.Runtime"
     ],

@@ -20,20 +20,20 @@ namespace Koyashiro.UdonJson
 
         public static UdonJsonValue NewObject()
         {
-            return New(UdonJsonValueKind.Object, UdonDictionary.New());
+            return New(UdonJsonValueKind.Object, UdonDictionary<string, object>.New());
         }
 
-        public static UdonJsonValue NewObject(UdonDictionary obj)
+        public static UdonJsonValue NewObject(UdonDictionary<string, object> obj)
         {
             return New(UdonJsonValueKind.Object, obj);
         }
 
         public static UdonJsonValue NewArray()
         {
-            return New(UdonJsonValueKind.Array, UdonObjectList.New());
+            return New(UdonJsonValueKind.Array, UdonList<object>.New());
         }
 
-        public static UdonJsonValue NewArray(UdonObjectList array)
+        public static UdonJsonValue NewArray(UdonList<object> array)
         {
             return New(UdonJsonValueKind.Array, array);
         }
