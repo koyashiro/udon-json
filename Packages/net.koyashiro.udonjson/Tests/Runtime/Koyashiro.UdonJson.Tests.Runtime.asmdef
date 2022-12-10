@@ -4,7 +4,7 @@
         "UdonSharp.Runtime",
         "Koyashiro.UdonTest",
         "Koyashiro.UdonList",
-        "Koyashiro.UdonDictionary.Runtime",
+        "Koyashiro.UdonDictionary",
         "Koyashiro.UdonJson.Runtime"
     ],
     "includePlatforms": [],
