@@ -1,6 +1,7 @@
+using Koyashiro.UdonJson.Internal;
+
 namespace Koyashiro.UdonJson
 {
-    using Koyashiro.UdonException;
     using Koyashiro.UdonList;
     using Koyashiro.UdonDictionary;
 
@@ -17,7 +18,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.String)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             return (string)v.GetValueUnchecked();
@@ -27,7 +28,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Number)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             return (double)v.GetValueUnchecked();
@@ -37,7 +38,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.True && v.GetKind() != UdonJsonValueKind.False)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             return (bool)v.GetValueUnchecked();
@@ -47,7 +48,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Null)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             return null;
@@ -65,7 +66,7 @@ namespace Koyashiro.UdonJson
                 return v.AsList().Count();
             }
 
-            UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+            ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             return default;
         }
 
@@ -73,7 +74,7 @@ namespace Koyashiro.UdonJson
         //{
         //    if (v.GetKind() != UdonJsonValueKind.Object)
         //    {
-        //        UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+        //        ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
         //    }
         //
         //    return v.AsDictionary<string, object>().GetKey(index);
@@ -83,7 +84,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Object)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             return v.AsDictionary<string, object>().Keys();
@@ -93,7 +94,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Object)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             return (UdonJsonValue)v.AsDictionary<string, object>().GetValue(key);
@@ -103,7 +104,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Array)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             return (UdonJsonValue)(v.AsList().GetItem(key));
@@ -113,7 +114,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Object)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             v.AsDictionary<string, object>().SetValue(key, value);
@@ -123,7 +124,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Array)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             v.AsList().SetItem(key, value);
@@ -187,7 +188,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() != UdonJsonValueKind.Array)
             {
-                UdonException.ThrowArgumentException(ERR_INVALID_KIND);
+                ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
             v.AsList().Add(value);

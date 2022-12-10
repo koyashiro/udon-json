@@ -15,9 +15,6 @@
     "net.koyashiro.udondictionary": {
       "version": "0.6.0"
     },
-    "net.koyashiro.udonexception": {
-      "version": "0.1.0"
-    },
     "net.koyashiro.udontest": {
       "version": "0.4.1"
     }
@@ -59,12 +56,6 @@
       "dependencies": {
         "com.vrchat.udonsharp": "1.1.6",
         "net.koyashiro.udonlist": "0.12.3"
-      }
-    },
-    "net.koyashiro.udonexception": {
-      "version": "0.2.0",
-      "dependencies": {
-        "com.vrchat.udonsharp": "1.1.5"
       }
     },
     "net.koyashiro.udontest": {
