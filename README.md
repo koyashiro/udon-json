@@ -66,55 +66,45 @@ public class UdonJsonDeserializerSample : UdonSharpBehaviour
         Debug.Log(result); // True
 
         // JSON value kind
-        Debug.Log(json.GetKind()); // 2
-        Debug.Log(json.GetKind().ToKindString()); // Object
+        Debug.Log(json.GetKind() == UdonJsonValueKind.Object); // True
 
         // String
         var valueA = json.GetValue("keyA");
-        Debug.Log(valueA.GetKind()); // 0
-        Debug.Log(valueA.GetKind().ToKindString()); // Object
+        Debug.Log(valueA.GetKind() == UdonJsonValueKind.String); // True
         Debug.Log(valueA.AsString()); // valueA
 
         // Number
         var valueB = json.GetValue("keyB");
-        Debug.Log(valueB.GetKind()); // 1
-        Debug.Log(valueB.GetKind().ToKindString()); // Number
+        Debug.Log(valueB.GetKind() == UdonJsonValueKind.Number); // True
         Debug.Log(valueB.AsNumber()); // 123
 
         // Object
         var valueF = json.GetValue("keyF");
-        Debug.Log(valueF.GetKind()); // 2
-        Debug.Log(valueF.GetKind().ToKindString()); // Object
+        Debug.Log(valueF.GetKind() == UdonJsonValueKind.Object); // True
         var valueFA = valueF.GetValue("keyFA");
-        Debug.Log(valueFA.GetKind()); // 0
-        Debug.Log(valueFA.GetKind().ToKindString()); // String
+        Debug.Log(valueFA.GetKind() == UdonJsonValueKind.String); // True
         Debug.Log(valueFA.AsString()); // valueFA
 
         // Array
         var valueG = json.GetValue("keyG");
-        Debug.Log(valueG.GetKind()); // 3
-        Debug.Log(valueG.GetKind().ToKindString()); // Array
+        Debug.Log(valueG.GetKind() == UdonJsonValueKind.Array); // True
         var valueG0 = valueG.GetValue(0);
-        Debug.Log(valueG0.GetKind()); // 1
-        Debug.Log(valueG0.GetKind().ToKindString()); // Number
+        Debug.Log(valueG0.GetKind() == UdonJsonValueKind.Number); // True
         Debug.Log(valueG0.AsNumber()); // 0
 
         // True
         var valueC = json.GetValue("keyC");
-        Debug.Log(valueC.GetKind()); // 4
-        Debug.Log(valueC.GetKind().ToKindString()); // True
+        Debug.Log(valueC.GetKind() == UdonJsonValueKind.True); // True
         Debug.Log(valueC.AsBool()); // True
 
         // False
         var valueD = json.GetValue("keyD");
-        Debug.Log(valueD.GetKind()); // 5
-        Debug.Log(valueD.GetKind().ToKindString()); // False
+        Debug.Log(valueD.GetKind() == UdonJsonValueKind.False); // True
         Debug.Log(valueD.AsBool()); // false
 
         // Null
         var valueE = json.GetValue("keyE");
-        Debug.Log(valueE.GetKind()); // 6
-        Debug.Log(valueE.GetKind().ToKindString()); // Null
+        Debug.Log(valueE.GetKind() == UdonJsonValueKind.Null); // True
         Debug.Log(valueE.AsNull()); // Null
     }
 }
