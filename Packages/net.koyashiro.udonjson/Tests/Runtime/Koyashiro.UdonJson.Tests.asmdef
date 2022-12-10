@@ -1,9 +1,11 @@
 {
-    "name": "Koyashiro.UdonJson.Runtime",
+    "name": "Koyashiro.UdonJson.Tests",
     "references": [
         "UdonSharp.Runtime",
+        "Koyashiro.UdonTest",
         "Koyashiro.UdonList",
-        "Koyashiro.UdonDictionary"
+        "Koyashiro.UdonDictionary",
+        "Koyashiro.UdonJson"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
