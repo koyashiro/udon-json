@@ -17,7 +17,7 @@ namespace Koyashiro.UdonJson
             var chars = new char[ser.GetBuf().Count()];
             for (var i = 0; i < chars.Length; i++)
             {
-                chars[i] = (char)ser.GetBuf().GetItem(i);
+                chars[i] = (char)ser.GetBuf().Get(i);
             }
             return new string(chars);
         }
