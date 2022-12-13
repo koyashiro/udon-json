@@ -331,7 +331,7 @@ namespace Koyashiro.UdonJson
                 }
                 var value = (UdonJsonValue)des.GetOutput();
 
-                dic.Set(key, value);
+                dic.SetValue(key, value);
             }
 
             // }

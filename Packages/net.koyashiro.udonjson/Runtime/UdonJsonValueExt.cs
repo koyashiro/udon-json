@@ -97,7 +97,7 @@ namespace Koyashiro.UdonJson
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            return (UdonJsonValue)v.AsDictionary<string, object>().Get(key);
+            return (UdonJsonValue)v.AsDictionary<string, object>().GetValue(key);
         }
 
         public static UdonJsonValue GetValue(this UdonJsonValue v, int key)
@@ -107,7 +107,7 @@ namespace Koyashiro.UdonJson
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            return (UdonJsonValue)(v.AsList().Get(key));
+            return (UdonJsonValue)(v.AsList().GetValue(key));
         }
 
         public static void SetValue(this UdonJsonValue v, string key, UdonJsonValue value)
@@ -117,7 +117,7 @@ namespace Koyashiro.UdonJson
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            v.AsDictionary<string, object>().Set(key, value);
+            v.AsDictionary<string, object>().SetValue(key, value);
         }
 
         public static void SetValue(this UdonJsonValue v, int key, UdonJsonValue value)
@@ -127,7 +127,7 @@ namespace Koyashiro.UdonJson
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            v.AsList().Set(key, value);
+            v.AsList().SetValue(key, value);
         }
 
         public static void SetValue(this UdonJsonValue v, string key, string value)
