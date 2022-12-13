@@ -29,10 +29,10 @@
       "path": "Samples~/UdonJsonDeserializerSample"
     }
   ],
-  "url": "https://github.com/koyashiro/udon-json/releases/download/v0.8.0/net.koyashiro.udonjson-0.8.0.zip",
+  "url": "https://github.com/koyashiro/udon-json/releases/download/v0.9.0/net.koyashiro.udonjson-0.9.0.zip",
   "vpmDependencies": {
     "com.vrchat.udonsharp": "1.1.6",
-    "net.koyashiro.udondictionary": "0.9.0",
+    "net.koyashiro.udondictionary": "0.8.0",
     "net.koyashiro.udonlist": "0.14.0"
   }
 }
