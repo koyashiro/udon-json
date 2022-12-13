@@ -101,17 +101,17 @@ namespace Koyashiro.UdonJson.Tests
                 ""seventh"": null
             }", out output, out error), this);
             var dic = UdonDictionary<string, object>.New();
-            dic.SetValue("first", UdonJsonValue.NewString("str"));
-            dic.SetValue("second", UdonJsonValue.NewNumber(123));
+            dic.Set("first", UdonJsonValue.NewString("str"));
+            dic.Set("second", UdonJsonValue.NewNumber(123));
             var dicThird = UdonDictionary<string, object>.New();
-            dicThird.SetValue("thirdA", UdonJsonValue.NewString("str"));
-            dicThird.SetValue("thirdB", UdonJsonValue.NewNumber(123));
-            dicThird.SetValue("thirdC", UdonJsonValue.NewObject());
-            dicThird.SetValue("thirdD", UdonJsonValue.NewArray());
-            dicThird.SetValue("thirdE", UdonJsonValue.NewTrue());
-            dicThird.SetValue("thirdF", UdonJsonValue.NewFalse());
-            dicThird.SetValue("thirdG", UdonJsonValue.NewNull());
-            dic.SetValue("third", UdonJsonValue.NewObject(dicThird));
+            dicThird.Set("thirdA", UdonJsonValue.NewString("str"));
+            dicThird.Set("thirdB", UdonJsonValue.NewNumber(123));
+            dicThird.Set("thirdC", UdonJsonValue.NewObject());
+            dicThird.Set("thirdD", UdonJsonValue.NewArray());
+            dicThird.Set("thirdE", UdonJsonValue.NewTrue());
+            dicThird.Set("thirdF", UdonJsonValue.NewFalse());
+            dicThird.Set("thirdG", UdonJsonValue.NewNull());
+            dic.Set("third", UdonJsonValue.NewObject(dicThird));
             var listFourth = UdonList<object>.New();
             listFourth.Add(UdonJsonValue.NewString("str"));
             listFourth.Add(UdonJsonValue.NewNumber(123));
@@ -120,10 +120,10 @@ namespace Koyashiro.UdonJson.Tests
             listFourth.Add(UdonJsonValue.NewTrue());
             listFourth.Add(UdonJsonValue.NewFalse());
             listFourth.Add(UdonJsonValue.NewNull());
-            dic.SetValue("fourth", UdonJsonValue.NewArray(listFourth));
-            dic.SetValue("fifth", UdonJsonValue.NewTrue());
-            dic.SetValue("sixth", UdonJsonValue.NewFalse());
-            dic.SetValue("seventh", UdonJsonValue.NewNull());
+            dic.Set("fourth", UdonJsonValue.NewArray(listFourth));
+            dic.Set("fifth", UdonJsonValue.NewTrue());
+            dic.Set("sixth", UdonJsonValue.NewFalse());
+            dic.Set("seventh", UdonJsonValue.NewNull());
             Assert.Equal(new object[] { UdonJsonValueKind.Object, dic }, output, this);
             Assert.Equal(null, error, this);
         }
