@@ -70,16 +70,6 @@ namespace Koyashiro.UdonJson
             return default;
         }
 
-        //public static string GetKey(this UdonJsonValue v, int index)
-        //{
-        //    if (v.GetKind() != UdonJsonValueKind.Object)
-        //    {
-        //        ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
-        //    }
-        //
-        //    return v.AsDictionary<string, object>().GetKey(index);
-        //}
-
         public static string[] Keys(this UdonJsonValue v)
         {
             if (v.GetKind() != UdonJsonValueKind.Object)

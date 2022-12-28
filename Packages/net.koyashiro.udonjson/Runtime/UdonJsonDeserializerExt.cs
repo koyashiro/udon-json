@@ -9,7 +9,6 @@ namespace Koyashiro.UdonJson
     {
         private const string ERROR_UNEXPECTED_END = "Unexpected end";
         private const string ERROR_UNEXPECTED_TOKEN = "Unexpected token";
-        //private const string ERROR_EXPECTED_BRACE = "Expected {";
 
         public static char[] GetInput(this UdonJsonDeserializer des)
         {
