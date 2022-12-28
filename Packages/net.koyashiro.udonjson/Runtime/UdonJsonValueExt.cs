@@ -100,6 +100,17 @@ namespace Koyashiro.UdonJson
             return (UdonJsonValue)(v.AsList().GetValue(index));
         }
 
+        public static bool TryGetValue(this UdonJsonValue v, string key, out UdonJsonValue value)
+        {
+            if (v.GetKind() != UdonJsonValueKind.Object)
+            {
+                value = default;
+                return false;
+            }
+
+            return v.AsDictionary().TryGetValue(key, out value);
+        }
+
         public static void SetValue(this UdonJsonValue v, string key, UdonJsonValue value)
         {
             if (v.GetKind() != UdonJsonValueKind.Object)
