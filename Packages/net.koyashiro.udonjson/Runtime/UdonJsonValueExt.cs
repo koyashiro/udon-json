@@ -58,7 +58,7 @@ namespace Koyashiro.UdonJson
         {
             if (v.GetKind() == UdonJsonValueKind.Object)
             {
-                return v.AsDictionary<string, object>().Count();
+                return v.AsDictionary().Count();
             }
 
             if (v.GetKind() == UdonJsonValueKind.Array)
@@ -77,7 +77,7 @@ namespace Koyashiro.UdonJson
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            return v.AsDictionary<string, object>().Keys();
+            return v.AsDictionary().Keys();
         }
 
         public static UdonJsonValue GetValue(this UdonJsonValue v, string key)
@@ -87,17 +87,17 @@ namespace Koyashiro.UdonJson
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            return (UdonJsonValue)v.AsDictionary<string, object>().GetValue(key);
+            return v.AsDictionary().GetValue(key);
         }
 
-        public static UdonJsonValue GetValue(this UdonJsonValue v, int key)
+        public static UdonJsonValue GetValue(this UdonJsonValue v, int index)
         {
             if (v.GetKind() != UdonJsonValueKind.Array)
             {
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            return (UdonJsonValue)(v.AsList().GetValue(key));
+            return (UdonJsonValue)(v.AsList().GetValue(index));
         }
 
         public static void SetValue(this UdonJsonValue v, string key, UdonJsonValue value)
@@ -107,7 +107,7 @@ namespace Koyashiro.UdonJson
                 ExceptionHelper.ThrowArgumentException(ERR_INVALID_KIND);
             }
 
-            v.AsDictionary<string, object>().SetValue(key, value);
+            v.AsDictionary().SetValue(key, value);
         }
 
         public static void SetValue(this UdonJsonValue v, int key, UdonJsonValue value)
@@ -211,14 +211,14 @@ namespace Koyashiro.UdonJson
             v.AddValue(UdonJsonValue.NewNull());
         }
 
-        private static UdonDictionary<TKey, TValue> AsDictionary<TKey, TValue>(this UdonJsonValue v)
+        private static UdonDictionary<string, UdonJsonValue> AsDictionary(this UdonJsonValue v)
         {
-            return (UdonDictionary<TKey, TValue>)v.GetValueUnchecked();
+            return (UdonDictionary<string, UdonJsonValue>)v.GetValueUnchecked();
         }
 
-        private static UdonList<object> AsList(this UdonJsonValue v)
+        private static UdonList<UdonJsonValue> AsList(this UdonJsonValue v)
         {
-            return (UdonList<object>)v.GetValueUnchecked();
+            return (UdonList<UdonJsonValue>)v.GetValueUnchecked();
         }
 
         private static object GetValueUnchecked(this UdonJsonValue v)
