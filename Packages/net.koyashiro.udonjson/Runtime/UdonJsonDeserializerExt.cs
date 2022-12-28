@@ -28,7 +28,7 @@ namespace Koyashiro.UdonJson
 
         public static object GetOutput(this UdonJsonDeserializer des)
         {
-            return (UdonJsonValue)(((object[])(object)des)[2]);
+            return ((object[])(object)des)[2];
         }
 
         private static void SetOutput(this UdonJsonDeserializer des, object output)
