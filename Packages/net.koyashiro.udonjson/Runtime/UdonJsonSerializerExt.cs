@@ -14,11 +14,7 @@ namespace Koyashiro.UdonJson
 
         public static string GetOutput(this UdonJsonSerializer ser)
         {
-            var chars = new char[ser.GetBuf().Count()];
-            for (var i = 0; i < chars.Length; i++)
-            {
-                chars[i] = (char)ser.GetBuf().GetValue(i);
-            }
+            var chars = ser.GetBuf().ToArray();
             return new string(chars);
         }
 
