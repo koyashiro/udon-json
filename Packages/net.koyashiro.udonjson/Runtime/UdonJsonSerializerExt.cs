@@ -106,10 +106,7 @@ namespace Koyashiro.UdonJson
 
         private static void Write(this UdonJsonSerializer ser, string s)
         {
-            for (var i = 0; i < s.Length; i++)
-            {
-                ser.GetBuf().Add(s[i]);
-            }
+            ser.GetBuf().AddRange(s.ToCharArray());
         }
     }
 }
