@@ -39,7 +39,18 @@ namespace Koyashiro.UdonJson
             {
                 case UdonJsonValueKind.String:
                     ser.Write('"');
-                    ser.Write(v.AsString());
+                    ser.Write(
+                        v
+                        .AsString()
+                        .Replace("\"", "\\\"")
+                        .Replace("\\\\", "\\")
+                        .Replace("/", "\\/")
+                        .Replace("\b", "\\b")
+                        .Replace("\f", "\\f")
+                        .Replace("\n", "\\n")
+                        .Replace("\r", "\\r")
+                        .Replace("\t", "\\t")
+                    );
                     ser.Write('"');
                     break;
                 case UdonJsonValueKind.Number:

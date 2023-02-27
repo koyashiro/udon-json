@@ -12,7 +12,10 @@ namespace Koyashiro.UdonJson.Tests
             UdonJsonValue json;
 
             json = UdonJsonValue.NewString("str");
-            Assert.Equal(@"""str""", UdonJsonSerializer.Serialize(json), this);
+            Assert.Equal("\"str\"", UdonJsonSerializer.Serialize(json), this);
+
+            json = UdonJsonValue.NewString("\"\\/\b\f\n\r\t");
+            Assert.Equal("\"\\\"\\\\/\\b\\f\\n\\r\\t\"", UdonJsonSerializer.Serialize(json), this);
 
             json = UdonJsonValue.NewNumber(123);
             Assert.Equal("123", UdonJsonSerializer.Serialize(json), this);

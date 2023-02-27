@@ -19,6 +19,10 @@ namespace Koyashiro.UdonJson.Tests
             Assert.Equal(new object[] { UdonJsonValueKind.String, "str" }, output, this);
             Assert.Equal(null, error, this);
 
+            Assert.True(UdonJsonDeserializer.TryDeserialize("\"\\\"\\\\\\/\\b\\f\\n\\r\\t\"", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.String, "\"\\/\b\f\n\r\t" }, output, this);
+            Assert.Equal(null, error, this);
+
             Assert.True(UdonJsonDeserializer.TryDeserialize("123", out output, out error), this);
             Assert.Equal(new object[] { UdonJsonValueKind.Number, 123d }, output, this);
             Assert.Equal(null, error, this);
