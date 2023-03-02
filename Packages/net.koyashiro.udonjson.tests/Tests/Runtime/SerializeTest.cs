@@ -17,6 +17,12 @@ namespace Koyashiro.UdonJson.Tests
             json = UdonJsonValue.NewString("\"\\/\b\f\n\r\t");
             Assert.Equal("\"\\\"\\\\/\\b\\f\\n\\r\\t\"", UdonJsonSerializer.Serialize(json), this);
 
+            json = UdonJsonValue.NewString("\0");
+            Assert.Equal("\"\\u0000\"", UdonJsonSerializer.Serialize(json), this);
+
+            json = UdonJsonValue.NewString("aaa\naaa\0aaa");
+            Assert.Equal("\"aaa\\naaa\\u0000aaa\"", UdonJsonSerializer.Serialize(json), this);
+
             json = UdonJsonValue.NewNumber(123);
             Assert.Equal("123", UdonJsonSerializer.Serialize(json), this);
 

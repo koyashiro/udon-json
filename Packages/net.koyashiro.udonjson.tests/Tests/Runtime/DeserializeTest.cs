@@ -23,6 +23,18 @@ namespace Koyashiro.UdonJson.Tests
             Assert.Equal(new object[] { UdonJsonValueKind.String, "\"\\/\b\f\n\r\t" }, output, this);
             Assert.Equal(null, error, this);
 
+            Assert.True(UdonJsonDeserializer.TryDeserialize("\"\\ud83c\\udf63\"", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.String, "🍣" }, output, this);
+            Assert.Equal(null, error, this);
+
+            Assert.True(UdonJsonDeserializer.TryDeserialize("\"aaa\\naaa\\ud83c\\udf63aaa\"", out output, out error), this);
+            Assert.Equal(new object[] { UdonJsonValueKind.String, "aaa\naaa🍣aaa" }, output, this);
+            Assert.Equal(null, error, this);
+
+            Assert.False(UdonJsonDeserializer.TryDeserialize("\"\0\"", out output, out error), this);
+            Assert.Equal(null, output, this);
+            Assert.True(error.IndexOf("Bad control character in string literal") != -1, this);
+
             Assert.True(UdonJsonDeserializer.TryDeserialize("123", out output, out error), this);
             Assert.Equal(new object[] { UdonJsonValueKind.Number, 123d }, output, this);
             Assert.Equal(null, error, this);

@@ -35,18 +35,59 @@ namespace Koyashiro.UdonJson
             {
                 case UdonJsonValueKind.String:
                     ser.Write('"');
-                    ser.Write(
-                        v
-                        .AsString()
-                        .Replace("\"", "\\\"")
-                        .Replace("\\\\", "\\")
-                        .Replace("/", "\\/")
-                        .Replace("\b", "\\b")
-                        .Replace("\f", "\\f")
-                        .Replace("\n", "\\n")
-                        .Replace("\r", "\\r")
-                        .Replace("\t", "\\t")
-                    );
+                    var s = v.AsString().ToCharArray();
+                    var start = 0;
+                    for (var i = 0; i < s.Length; i++)
+                    {
+                        var c = s[i];
+                        switch (c)
+                        {
+                            case '"':
+                                ser.Write(new string(s, start, i - start));
+                                ser.Write("\\\"");
+                                start = i + 1;
+                                continue;
+                            case '\\':
+                                ser.Write(new string(s, start, i - start));
+                                ser.Write("\\\\");
+                                start = i + 1;
+                                continue;
+                            case '\b':
+                                ser.Write(new string(s, start, i - start));
+                                ser.Write("\\b");
+                                start = i + 1;
+                                continue;
+                            case '\f':
+                                ser.Write(new string(s, start, i - start));
+                                ser.Write("\\f");
+                                start = i + 1;
+                                continue;
+                            case '\n':
+                                ser.Write(new string(s, start, i - start));
+                                ser.Write("\\n");
+                                start = i + 1;
+                                continue;
+                            case '\r':
+                                ser.Write(new string(s, start, i - start));
+                                ser.Write("\\r");
+                                start = i + 1;
+                                continue;
+                            case '\t':
+                                ser.Write(new string(s, start, i - start));
+                                ser.Write("\\t");
+                                start = i + 1;
+                                continue;
+                        }
+
+                        if (0x00 <= c && c <= 0x001f)
+                        {
+                            ser.Write(new string(s, start, i - start));
+                            ser.Write($"\\u{((ushort)c):x4}");
+                            start = i + 1;
+                            continue;
+                        }
+                    }
+                    ser.Write(new string(s, start, s.Length - start));
                     ser.Write('"');
                     break;
                 case UdonJsonValueKind.Number:
