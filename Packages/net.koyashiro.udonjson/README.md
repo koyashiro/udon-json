@@ -2,6 +2,12 @@
 
 JSON serializer/deserializer implementation for UdonSharp.
 
+## Installation
+
+```sh
+vpm add repo https://vpm.koyashiro.net/repos.json
+```
+
 ## Serialization
 
 ```cs
