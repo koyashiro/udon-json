@@ -142,6 +142,10 @@ namespace Koyashiro.UdonJson.Tests
             dic.SetValue("seventh", UdonJsonValue.NewNull());
             Assert.Equal(new object[] { UdonJsonValueKind.Object, dic }, output, this);
             Assert.Equal(null, error, this);
+
+            UdonJsonDeserializer.TryDeserialize("Infinity", out output, out error);
+            Debug.LogWarning(output.AsNumber());
+            Debug.LogWarning(error);
         }
     }
 }

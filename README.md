@@ -1,3 +1,7 @@
+# ⚠️ ARCHIVED ⚠️
+
+This repository has been archived following the launch of [VRCJSON](https://docs.vrchat.com/docs/vrcjson). We strongly recommend using [VRCJSON](https://docs.vrchat.com/docs/vrcjson) for future projects.
+
 # UdonJson
 
 JSON serializer/deserializer implementation for UdonSharp.
